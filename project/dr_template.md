@@ -25,7 +25,8 @@ the cluster will be distributed across AZ provided in terraform files as like ab
 ### Table 1.1 Summary
 | Asset      | Purpose           | Size                                                                   | Qty                                                             | DR                                                                                                           |
 |------------|-------------------|------------------------------------------------------------------------|-----------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------|
-| Ec2 instances | Used as a virtual server for configuring security and networking and to manage storage | AWS size eg. t3.micro (if applicable, not all assets will have a size) | Number of nodes/replicas or just how many of a particular asset | Identify if this asset is deployed to DR, replicated, created in multiple locations or just stored elsewhere |
+| Ec2 instances | Used as a virtual server for configuring security and networking and to manage storage | t3.micro | 3 EC2 instances in each region us-east-2 and us-west-1 | replicate the same in the us-west-1 |
+| Ec2 instances | Used as a virtual server for configuring security and networking and to manage storage | t3.micro | 3 EC2 instances in each region us-east-2 and us-west-1 | replicate the same in the us-west-1 |
 
 ### Descriptions
 
