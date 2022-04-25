@@ -21,6 +21,9 @@ Three Ec2 instances for Web in each Us-east-2 and for us-west-1. each cluster on
 RDS Database will have a cluster in us-east-2 and in us-west-1 with two nodes in each cluster.
 the cluster will be distributed across AZ provided in terraform files as like above.
 
+test	test	tetst	Twts
+1	1	11	1
+1	1	1	1<img width="396" alt="image" src="https://user-images.githubusercontent.com/99836085/165151584-ead90220-303e-423b-9ca0-a073cd9406f5.png">
 
 ### Table 1.1 Summary
 | Asset      | Purpose           | Size                                                                   | Qty                                                             | DR                                                                                                           |
