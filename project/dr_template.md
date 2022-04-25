@@ -27,7 +27,7 @@ the cluster will be distributed across AZ provided in terraform files as like ab
 |------------|-------------------|------------------------------------------------------------------------|-----------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------|
 | Ec2 instances | Used as a virtual server for configuring security and networking and to manage storage | t3.micro | 3 EC2 instances in each region us-east-2 and us-west-1 | replicate the same in the us-west-1 |
 | EKS Cluster | Container platform for managing, deploying and scaling the containerized application | t3.medium | 2 cluster nodes in each region us-east-2 and us-west-1 | replicate the same in the us-west-1 |
-| EKS Cluster | Container platform for managing, deploying and scaling the containerized application | t3.medium | 2 cluster nodes in each region us-east-2 and us-west-1 | replicate the same in the us-west-1 |
+| RDS Cluster | DB cluster to store and retrieve data | db.t2.small| 2 cluster nodes in each region us-east-2 and us-west-1 with one primary writer and one for read | replicate the same in the us-west-1 region |
 ### Descriptions
 
 
