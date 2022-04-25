@@ -49,10 +49,7 @@ Key pairs to be created as "Udacity" in us-east-2 and us-west-1 to prove your id
 
 ## DR Plan
 ### Pre-Steps:
-Copy the same set of code of terrform in to another folder and make the changes to the regions and to the corresponding availability zones.
-Creaste the S3 Bucket and update the same in the config.tf file and the region specific ami in the ec2 file. and deploy the terraform file to replicate the same in the another region.
+We need to follow the same template and the resources used in the primary region to our DR environment to ensure the replication is perfect and the resource will handle the traffic in DR as like the primary. To replicate the environment copy the code in to another zone (zone 2 for secondary) to ensure there is no humar error. ensure the Load balancer alb is setup in zone1 and zone2 of the code to ensure the failover works perfect with the VPC and subnet information of the zone1 to the zone2.
 
 ## Steps:
-Create the replication for the instances and for the DB cluster in another region. Ensure the other region is up and runnning.
-To check the failover is working you can restart/reboot the instances and the cluster nodes in the primary region and the traffic will automatically redirects to the secondary region this is achieved with the help of the load balancer.
-
+For failover, the datebase needs to be up and running in the other region [us-west-1],  ensures the load balancer is setup correctly. To failover click the reboot with failover options on the aws page of the primary and the Loadbalancer will ensures the traffic is passed on to the secondary instances in the us-west-1 region. Use the monitoring tools [prometheus/graffana] to ensure the traffic is coming in to the us-west-1 regions which is we configured as secondary here.
