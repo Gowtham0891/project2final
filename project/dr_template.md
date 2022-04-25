@@ -27,6 +27,9 @@ the cluster will be distributed across AZ provided in terraform files as like ab
 |------------|-------------------|------------------------------------------------------------------------|-----------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------|
 | Asset name | Brief description | AWS size eg. t3.micro (if applicable, not all assets will have a size) | Number of nodes/replicas or just how many of a particular asset | Identify if this asset is deployed to DR, replicated, created in multiple locations or just stored elsewhere |
 
+### Descriptions
+More detailed descriptions of each asset identified above.
+
 S3 bucket - one in us-east-2 and another in us-west-1 used to store terraform code data and RDS data thats been Deployed
 
 Ubuntu-Web - Web Front end EC2 insstances of t3.micro each region will have three EC2 instances one for us-east-2 as primary and three in us-west-1 as secondary.
@@ -41,8 +44,7 @@ Key pairs to be created as "Udacity" in us-east-2 and us-west-1 to prove your id
 
 
 
-### Descriptions
-More detailed descriptions of each asset identified above.
+
 
 ## DR Plan
 ### Pre-Steps:
