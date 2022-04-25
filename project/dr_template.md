@@ -23,8 +23,7 @@ the cluster will be distributed across AZ provided in terraform files as like ab
 
 test	test	tetst	Twts
 1	1	11	1
-1	1	1	1<img width="396" alt="image" src="https://user-images.githubusercontent.com/99836085/165151584-ead90220-303e-423b-9ca0-a073cd9406f5.png">
-
+1	1	1	1
 ### Table 1.1 Summary
 | Asset      | Purpose           | Size                                                                   | Qty                                                             | DR                                                                                                           |
 |------------|-------------------|------------------------------------------------------------------------|-----------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------|
