@@ -27,20 +27,18 @@ the cluster will be distributed across AZ provided in terraform files as like ab
 |------------|-------------------|------------------------------------------------------------------------|-----------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------|
 | Asset name | Brief description | AWS size eg. t3.micro (if applicable, not all assets will have a size) | Number of nodes/replicas or just how many of a particular asset | Identify if this asset is deployed to DR, replicated, created in multiple locations or just stored elsewhere |
 
+S3 bucket - one in us-east-2 and another in us-west-1 used to store terraform code data and RDS data thats been Deployed
 
-Ubuntu-Web - Web Front end t3.micro three EC2 instances per region for a total of six EC2 instances Three stored in us-east-2 as primary and three in us-west-1 as secondary but consumed by the LB (multi region)
+Ubuntu-Web - Web Front end EC2 insstances of t3.micro each region will have three EC2 instances one for us-east-2 as primary and three in us-west-1 as secondary.
 
-EKS cluster in each region. - Currently used to run Prometheus/Grafana deployment. t3.medium Each EKS cluster containing at least two Nodes and deployed using multi AZ VPCs.
+EKS cluster with two nodes each for the us-east-2 and for us-west-1 used to run Prometheus/Grafana deployment. t3.medium size as per the deployment file.
 
 RDS (Database) Cluster - to store data for web front end / appliation db.t2.small Primary cluster in us-east-2 with a primary(writer) and secondary(read) node Replicated node in us-west-1 with a primary(writer) and secondary(read) node Multi region and Database replication used - Primary/secondary ++ Regional/Replica configuration.
 
-Load balancer - used to provide DNS and VIP for front end services for load balance and failover. One in each region consuming the VPC for the instances.
+Load balancer - One in each region us-east-2 and for us-west-1 consuming the VPC for the instances for load balancing and for the failover
 
-S3 bucket - used to store terraform code and possible RDS backups Deployed to us-east-2 and us-west-1
+Key pairs to be created as "Udacity" in us-east-2 and us-west-1 to prove your identity when connecting to an Amazon EC2 instance.
 
-Security keys for remote access to the EC2 instances. Terraform code and its details, where it is stored, its backup, how its deployed, when it was last deployed, and its last config change. Security groups, IAM policies, EKS policies, RDS policies, RDS backups, EC2 snapshots etc... all not part of the training but needs to be included and documented.
-
-Billing/cost/utilization per region is an asset to be documented but not part of this project...
 
 
 ### Descriptions
