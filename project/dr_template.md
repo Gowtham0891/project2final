@@ -28,7 +28,7 @@ the cluster will be distributed across AZ provided in terraform files as like ab
 | Asset name | Brief description | AWS size eg. t3.micro (if applicable, not all assets will have a size) | Number of nodes/replicas or just how many of a particular asset | Identify if this asset is deployed to DR, replicated, created in multiple locations or just stored elsewhere |
 
 ### Descriptions
-More detailed descriptions of each asset identified above.
+
 
 S3 bucket - one in us-east-2 and another in us-west-1 used to store terraform code data and RDS data thats been Deployed
 
@@ -48,6 +48,10 @@ Key pairs to be created as "Udacity" in us-east-2 and us-west-1 to prove your id
 
 ## DR Plan
 ### Pre-Steps:
-The training slides lists 'Pre-steps' as 'Ensure both sides are configured the same and use IaC' Based on this and staying high level, we would consume the terraform code we created for region 1 and deploy it to region2. We did this via our zone1 and zone2 terraform folders. Consolidating the code into a larger module instead of attempting to maintain two seperate 'zone' files will be more resiliant again manual/human error. Terraform will also validate what has changed within the deployment since last deployment and allow for minor changes without needing to redeploy the entire infra or accessing the AWS GUI.
+Copy the same set of code of terrform in to another folder and make the changes to the regions and to the corresponding availability zones.
+Creaste the S3 Bucket and update the same in the config.tf file and the region specific ami in the ec2 file. and deploy the terraform file to replicate the same in the another region.
+
 ## Steps:
-1 - Failover the database. The database needs to be up and online in the other region before any other services can start. 2 - Failover the Application/EC2 instance (if not already provided by your Load balancer configuration.) 3 - Failover the load balancer - the text says to do this first but if the database and EC2 instances are not avaliable, the LB will blackhole traffic or cause traffic/usage on your devices attempting to promote to primary. 4 - Failover anything running in the EKS cluster 5 - Use monitoring tools (your EKS grafana or cloudwatch) to see if traffic is now flowing to your new primary region.
+Create the replication for the instances and for the DB cluster in another region. Ensure the other region is up and runnning.
+To check the failover is working you can restart/reboot the instances and the cluster nodes in the primary region and the traffic will automatically redirects to the secondary region this is achieved with the help of the load balancer.
+
