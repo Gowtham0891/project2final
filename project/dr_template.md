@@ -1,30 +1,26 @@
 # Infrastructure
+Two S3 buckets created one in us-east-2 and one in us-west-1, Three Web instances of EC2 in each region (us-east-2, us-west-1). two EKS nodes in each cluster deployed in the us-east-2 and in us-west-1. 
+Load balancer is delpoyed to distribute traffic and failover's. The RDS deployment will also have 2 nodes in each cluster [us-east-2 and in us-west-1]
+and the backup is set to 5 days.
+Grafana dashboards to monitor infrastartuture and application performance.
 
-Three EC2 instances for 'Web' for each region. Two EKS nodes per cluster in each region deployed using multi AZ VPCs. The VPCs consume an IP from multiple AZs in the region its deployed in. A load balancer is deployed (with VIP/DNS) to allow for distribution and failover for the web front end.
-
-The database (RDS) deployment will have two nodes (One Primary and One Secondary) per RDS Cluster. Two clusters will exist and distributed in at least two AWS regions. The RDS cluster in Zone1 (us-east-2) will replicate to zone2 (us-west-1) The backup retention will be configured for a retention level of five days.
-
-S3 buckets to contain terraform code and any backups/snapshots etc for EC2, RDS, etc that needs multi region access.
-
-EKS pods for Prometheus/Grafana deployment. Grafana dashboards to monitor infra and application health and capacity trends. (if not using AWS/cloudwatch tools/GUI for monitoring)
-
-Terraform code will be configured, deployed and maintaned to ensure both sites are configured the same. Users/External apps will use the DNS name from the load balancer to ensure VIP/load balance between web tier and for failover.
 
 ## AWS Zones
 
 
-command used: aws ec2 describe-availability-zones --region us-east-2 us-east-2a us-east-2b us-east-2c azs = ["us-east-2a", "us-east-2b", "us-east-2c"] Applied both for the VPC and the RDS terraform files
+command used to find the AZ [Availability Zones]: aws ec2 describe-availability-zones --region us-east-2 
+us-east-2a us-east-2b us-east-2c added in terraform code in VPC and in RDS files
 
-aws ec2 describe-availability-zones --region us-west-1 us-west-1b us-west-1c azs = ["us-west-1b", "us-west-1c"] Applied both for the VPC and the RDS terraform files
+aws ec2 describe-availability-zones --region us-west-1
+us-west-1b us-west-1a azs = ["us-west-1b", "us-west-1a"] added in terraform code in VPC and in RDS files
 
 ## Servers and Clusters
 
-Three EC2 instances for 'Web' for each region. Two EKS nodes per cluster in each region deployed using multi AZ VPCs.
+Three Ec2 instances for Web in each Us-east-2 and for us-west-1. each cluster one in us-east-2 and another in us-west-1 will have two nodes each.
 
-The database (RDS) deployment will have two nodes (One Primary and One Secondary) per RDS Cluster.
-Two clusters will exist and distributed in at least two AWS regions. The RDS cluster in Zone1 (us-east-2) will replicate to zone2 (us-west-1) Each RDS node will exist in a different AZ
+RDS Database will have a cluster in us-east-2 and in us-west-1 with two nodes in each cluster.
+the cluster will be distributed across AZ provided in terraform files as like above.
 
-EKS pods for Prometheus/Grafana deployment.
 
 ### Table 1.1 Summary
 | Asset      | Purpose           | Size                                                                   | Qty                                                             | DR                                                                                                           |
